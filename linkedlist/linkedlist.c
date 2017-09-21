@@ -35,6 +35,7 @@ int main(){
 // Assign third
 	third->data=91011;
 	third->next=NULL;
+// Print the damn list.
 printList(head);
 return 0;
 }
