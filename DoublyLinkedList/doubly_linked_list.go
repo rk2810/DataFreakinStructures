@@ -16,6 +16,9 @@ func(l *List) First() *Node {
 }
 
 func (l *List) Last() *Node {
+	if l.head == nil{
+		println("Empty list.")
+	}
 	return l.tail
 }
 
@@ -39,17 +42,51 @@ func (n *Node) Prev() *Node {
 	return n.prev
 }
 
+
+func (l *List) InMid(value , index int) {
+	node := &Node{value: value}
+	i := 0
+	n := l.First()
+	if index == 0 {
+		node.next = n
+		n.prev = node
+		l.head = node
+	}
+	for{
+		if i == index - 1 {
+			if n.Next() != nil {
+				node.next = n.next
+				n.next.prev = node
+				node.prev = n
+				n.next = node
+				break
+			} else {
+				n.next = node
+				node.prev = n
+				l.tail = node
+				break
+			}
+		}
+	n = n.Next()
+	i++
+	}
+}
+
+
 func main() {
 	l := &List{}
 	l.Push(1)
 	l.Push(2)
 	l.Push(3)
 
+	// l.InMid(5,1)
+	l.InMid(6,3)
+
 	n := l.First()
 	for{
 		println(n.value)
 		n = n.Next()
-		if n == nil{
+		if n == nil {
 			break
 		}
 	
