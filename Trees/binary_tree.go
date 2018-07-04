@@ -45,8 +45,23 @@ func PrintNode(n *Node) {
 	println(n.value)
 	PrintNode(n.left)
 	PrintNode(n.right)
-
 }
+
+func (n *Node) exists(value int) bool {
+	if n == nil {
+		return false
+	}
+	if n.value == value {
+		return true
+	}
+
+	if value <= n.value {
+		return n.left.exists(value)
+	} else {
+		return n.right.exists(value)
+	}
+}
+
 func main(){
 	t := &Tree{}
 	t.insert(10).
@@ -56,5 +71,6 @@ func main(){
 	insert(50)
 
 	PrintNode(t.node)
-
+	println(t.node.exists(25))
+	println(t.node.exists(50))
 }
