@@ -1,5 +1,3 @@
-//+build disable
-
 package main
 
 type Queue struct{
