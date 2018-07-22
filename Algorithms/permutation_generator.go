@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func permuation(array []int, l int, r int) { // l is left most index and r is right most index
+func permuation(array []string, l int, r int) { // l is left most index and r is right most index
 	if (l == r) {
 		fmt.Println(array)
 	}
@@ -18,7 +18,7 @@ func main(){
 	println("Enter number of elements in array:")
 	fmt.Scanln(&n)
 	println("Enter array:")
-    arr := make([]int, n)
+    arr := make([]string, n)
     for i := 0; i < n; i++ {
         fmt.Scan(&arr[i])
 	}
